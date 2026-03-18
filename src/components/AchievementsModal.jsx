@@ -2,24 +2,25 @@ import { motion } from 'framer-motion';
 
 const achievements = [
   {
-    title: 'SIH GRAND FINALE (2024)',
-    desc: 'Qualified and selected for Smart India Hackathon Grand Finale, demonstrating strong problem-solving skills and teamwork.',
+    title: 'HACKVYUHA 2025',
+    desc: 'National Finalist in HackVyuha 2025, competing among top teams across the country.',
     color: '#00CFCF',
     role: 'verified crewmate'
   },
   {
     title: 'QUANTUM VALLEY WINNER',
-    desc: 'Top 5 Winner in College-Level Idea Presentation Hackathon Event.',
+    desc: 'Top 3 in Quantum Valley Hackathon 2025 for innovative AI solution presentation.',
     color: '#F5F557',
     role: 'verified crewmate'
   },
   {
-    title: 'AMAZON ML CHALLENGE',
-    desc: 'Participant in the Amazon ML Challenge, showcasing applied machine learning expertise.',
+    title: 'CODECHEF COMPETITIVE RANK',
+    desc: 'CodeChef 1200 rating with 250+ problems solved, demonstrating strong algorithmic skills.',
     color: '#FF8400',
-    role: 'suspect'
+    role: 'verified crewmate'
   }
 ];
+
 
 export default function AchievementsModal({ onClose }) {
   return (

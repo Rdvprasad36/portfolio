@@ -88,13 +88,17 @@ export default function AboutModal({ onClose }) {
             style={{ marginBottom: '24px', borderBottom: '1px solid rgba(0,207,207,0.2)', paddingBottom: '16px' }}
           >
             <div className="pixel-heading" style={{ fontSize: '18px', color: '#00CFCF', marginBottom: '8px' }}>
-              RAPETI DURGA
+              DURGA VENKATA PRASAD RAPETI
             </div>
-            <div className="pixel-heading" style={{ fontSize: '18px', color: '#00CFCF', marginBottom: '12px' }}>
-              VENKATA PRASAD
+            <div className="pixel-text" style={{ color: '#A0AAB2', fontSize: '12px', marginBottom: '12px' }}>
+              Identity: Durga Venkata Prasad Rapeti <br/>
+              Role: AI & Data Science Specialist (Crewmate) <br/>
+              Efficiency Rating: 9.38/10 CGPA (Not an Impostor) <br/>
+              Mission: Building scalable AI solutions and real-world applications.
             </div>
             <span className="badge">CREWMATE #041 — AI & DATA SCIENCE</span>
           </motion.div>
+
 
           {/* Vital signs => CGPA / GPA */}
           <motion.div

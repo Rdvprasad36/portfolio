@@ -41,46 +41,63 @@ export default function ExperienceModal({ onClose }) {
               background: 'repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(255,132,0,0.05) 2px, rgba(255,132,0,0.05) 4px)'
             }} />
 
-            <motion.div
-              initial={{ y: 20, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ delay: 0.5 }}
-              className="au-panel-light"
-              style={{ padding: '24px', background: 'rgba(255,132,0,0.05)', border: '1px solid rgba(255,132,0,0.3)', position: 'relative', zIndex: 10 }}
-            >
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px', borderBottom: '1px solid rgba(255,132,0,0.2)', paddingBottom: '12px' }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                  <div style={{ width: 12, height: 12, borderRadius: '50%', background: '#FF8400', boxShadow: '0 0 10px #FF8400' }} />
-                  <span className="pixel-heading glow-orange" style={{ fontSize: '14px', color: '#FF8400' }}>
-                    INTERNPRO
+            {[
+              { 
+                company: 'INTERNPRO', 
+                role: 'AI/ML INTERN', 
+                date: 'July 2024 – Aug 2024',
+                tasks: ['Built an NLP-driven AI interview chatbot for automated screening.', 'Implemented core ML algorithms for candidate evaluation.']
+              },
+              { 
+                company: 'GOOGLE', 
+                role: 'ML INTERN', 
+                date: 'Current',
+                tasks: ['Completed 10-week virtual implementation of core machine learning.', 'Worked on scalable AI solutions and data processing pipelines.']
+              },
+              { 
+                company: 'SAC CLUB', 
+                role: 'CLUB MANAGER', 
+                date: '2025 – Present',
+                tasks: ['Lead logistics for flagship events like "Yuvatarang 2K26".', 'Managed team collaborations and event planning.']
+              }
+            ].map((exp, i) => (
+              <motion.div
+                key={exp.company}
+                initial={{ y: 20, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ delay: 0.5 + (i * 0.2) }}
+                className="au-panel-light"
+                style={{ padding: '24px', background: 'rgba(255,132,0,0.05)', border: '1px solid rgba(255,132,0,0.3)', position: 'relative', zIndex: 10, marginBottom: '10px' }}
+              >
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px', borderBottom: '1px solid rgba(255,132,0,0.2)', paddingBottom: '12px' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                    <div style={{ width: 12, height: 12, borderRadius: '50%', background: '#FF8400', boxShadow: '0 0 10px #FF8400' }} />
+                    <span className="pixel-heading glow-orange" style={{ fontSize: '14px', color: '#FF8400' }}>
+                      {exp.company}
+                    </span>
+                  </div>
+                  <span className="mono-text" style={{ fontSize: '14px', color: 'rgba(255,255,255,0.5)' }}>
+                    {exp.date}
                   </span>
                 </div>
-                <span className="mono-text" style={{ fontSize: '14px', color: 'rgba(255,255,255,0.5)' }}>
-                  July 2024 – Aug 2024
-                </span>
-              </div>
-              
-              <div className="pixel-text" style={{ color: '#fff', fontSize: '12px', marginBottom: '20px', letterSpacing: '1px' }}>
-                ROLE: DATA SCIENCE INTERN
-              </div>
+                
+                <div className="pixel-text" style={{ color: '#fff', fontSize: '12px', marginBottom: '20px', letterSpacing: '1px' }}>
+                  ROLE: {exp.role}
+                </div>
 
-              <ul className="mono-text" style={{ listStyleType: 'none', padding: 0, margin: 0 }}>
-                <li style={{ marginBottom: '12px', display: 'flex', gap: '12px', fontSize: '15px', color: 'rgba(255,255,255,0.8)' }}>
-                  <span style={{ color: '#FF8400' }}>&gt;</span>
-                  Analyzed extensive datasets utilizing standard data science methodologies, yielding practical insights.
-                </li>
-                <li style={{ marginBottom: '12px', display: 'flex', gap: '12px', fontSize: '15px', color: 'rgba(255,255,255,0.8)' }}>
-                  <span style={{ color: '#FF8400' }}>&gt;</span>
-                  Developed predictive models addressing practical business issues, demonstrating deep technical competence.
-                </li>
-                <li style={{ display: 'flex', gap: '12px', fontSize: '15px', color: 'rgba(255,255,255,0.8)' }}>
-                  <span style={{ color: '#FF8400' }}>&gt;</span>
-                  Engaged actively in team deliberations, proposing constructive ideas and refining project workflows.
-                </li>
-              </ul>
-            </motion.div>
+                <ul className="mono-text" style={{ listStyleType: 'none', padding: 0, margin: 0 }}>
+                  {exp.tasks.map((task, j) => (
+                    <li key={j} style={{ marginBottom: '12px', display: 'flex', gap: '12px', fontSize: '15px', color: 'rgba(255,255,255,0.8)' }}>
+                      <span style={{ color: '#FF8400' }}>&gt;</span>
+                      {task}
+                    </li>
+                  ))}
+                </ul>
+              </motion.div>
+            ))}
 
           </div>
+
 
           {/* View controls */}
           <div style={{ position: 'absolute', bottom: 24, left: 24, right: 24, display: 'flex', justifyContent: 'space-between' }}>

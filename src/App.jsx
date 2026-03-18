@@ -1,63 +1,54 @@
-import { useState, Suspense } from 'react';
+import { Suspense, lazy } from 'react';
+import { Routes, Route, useLocation } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
 import SpaceBackground from './components/SpaceBackground';
 import VCROverlay from './components/VCROverlay';
-import NavigationHub from './components/NavigationHub';
-import AboutModal from './components/AboutModal';
-import SkillsModal from './components/SkillsModal';
-import ProjectsModal from './components/ProjectsModal';
-import ExperienceModal from './components/ExperienceModal';
-import AchievementsModal from './components/AchievementsModal';
-import ContactModal from './components/ContactModal';
+import Navbar from './components/Navbar';
 import IntroSequence from './components/IntroSequence';
+import { useState } from 'react';
+
+// Lazy load pages for better performance and route isolation
+const Overview = lazy(() => import('./components/NavigationHub'));
+const Experience = lazy(() => import('./pages/Experience'));
+const Skills = lazy(() => import('./pages/Skills'));
+const Projects = lazy(() => import('./pages/Projects'));
+const Achievements = lazy(() => import('./pages/Achievements'));
+const Contact = lazy(() => import('./pages/Contact'));
 
 function App() {
-  const [activeModal, setActiveModal] = useState(null);
   const [showIntro, setShowIntro] = useState(true);
-
-  const renderModal = () => {
-    switch (activeModal) {
-      case 'about':
-        return <AboutModal onClose={() => setActiveModal(null)} />;
-      case 'skills':
-        return <SkillsModal onClose={() => setActiveModal(null)} />;
-      case 'projects':
-        return <ProjectsModal onClose={() => setActiveModal(null)} />;
-      case 'experience':
-        return <ExperienceModal onClose={() => setActiveModal(null)} />;
-      case 'achievements':
-        return <AchievementsModal onClose={() => setActiveModal(null)} />;
-      case 'contact':
-        return <ContactModal onClose={() => setActiveModal(null)} />;
-      default:
-        return null;
-    }
-  };
+  const location = useLocation();
 
   return (
     <>
       <VCROverlay />
       <SpaceBackground />
       
-      <main style={{ position: 'relative', minHeight: '100vh', zIndex: 10 }}>
+      <main style={{ position: 'relative', minHeight: '100vh', zIndex: 10, paddingTop: '70px' }}>
+        <Navbar />
         
-        {/* Main Hub Navigation */}
-        <NavigationHub onSelect={setActiveModal} selectedModal={activeModal} />
+        <Suspense fallback={<div className="pixel-loader">LOADING DATA...</div>}>
+          <AnimatePresence mode="wait">
+            <Routes location={location} key={location.pathname}>
+              <Route path="/" element={<Overview />} />
+              <Route path="/experience" element={<Experience />} />
+              <Route path="/skills" element={<Skills />} />
+              <Route path="/projects" element={<Projects />} />
+              <Route path="/achievements" element={<Achievements />} />
+              <Route path="/contact" element={<Contact />} />
+            </Routes>
+          </AnimatePresence>
+        </Suspense>
 
         {/* Global Floating Report Button */}
         <div style={{ position: 'fixed', bottom: 32, right: 32, zIndex: 100 }}>
           <button
-            onClick={() => setActiveModal('contact')}
+            onClick={() => window.location.href = '/contact'}
             className="report-btn"
           >
             REPORT
           </button>
         </div>
-
-        {/* Modals Container */}
-        <AnimatePresence>
-          {activeModal && renderModal()}
-        </AnimatePresence>
 
         {/* Intro Sequence Overlay */}
         <AnimatePresence>

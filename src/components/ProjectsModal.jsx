@@ -5,22 +5,32 @@ const projects = [
   {
     id: 1,
     title: 'STUDYXPERT AI',
-    desc: 'An AI-driven platform for personalized learning paths, real-time query resolution, and performance tracking. Features intelligent study plan generation and quiz assessments based on student metrics.',
-    tech: ['Python', 'Gemini API', 'Flask', 'MySQL'],
+    desc: 'Full-stack learning assistant platform built with TypeScript. Features personalized learning paths and real-time query resolution.',
+    tech: ['TypeScript', 'Next.js', 'Node.js', 'Gemini API'],
     color: '#6B31BC',
     link: '#',
     status: 'completed'
   },
   {
     id: 2,
-    title: 'AI CHATBOT',
-    desc: 'Intelligent conversational agent integrating Generative AI for customized educational assistance. Processes natural language to summarize textbooks and aid complex topic understanding.',
-    tech: ['Python', 'NLP', 'TensorFlow', 'LLMs', 'React'],
+    title: 'BLINDGO',
+    desc: 'Smart glasses for visually impaired audio navigation, providing real-time assistance and obstacle detection.',
+    tech: ['Python', 'Computer Vision', 'NLP', 'Embedded Systems'],
     color: '#00CFCF',
     link: '#',
-    status: 'in-progress'
+    status: 'completed'
+  },
+  {
+    id: 3,
+    title: 'BUSBUDDY',
+    desc: 'Real-time bus tracking system for accessibility, ensuring smooth and predictable transit for all users.',
+    tech: ['React', 'Node.js', 'Firebase', 'Google Maps API'],
+    color: '#FF8400',
+    link: '#',
+    status: 'completed'
   }
 ];
+
 
 export default function ProjectsModal({ onClose }) {
   const [downloadProgress, setDownloadProgress] = useState(0);

@@ -27,78 +27,103 @@ export default function ContactModal({ onClose }) {
         </div>
 
         {/* Content */}
-        <div style={{ padding: '32px' }}>
+        <div style={{ padding: '32px', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '32px' }}>
           
-          <div style={{ textAlign: 'center', marginBottom: '24px' }}>
-            <span className="pixel-text" style={{ color: '#ffaaaa', fontSize: '10px' }}>
-              TRANSMIT INCIDENT DETAILS TO COMM RELAY
-            </span>
+          {/* Left Side: Form */}
+          <div>
+            <div style={{ textAlign: 'center', marginBottom: '24px' }}>
+              <span className="pixel-text" style={{ color: '#ffaaaa', fontSize: '10px' }}>
+                TRANSMIT INCIDENT DETAILS TO COMM RELAY
+              </span>
+            </div>
+
+            <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+              
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                <label className="pixel-text" style={{ color: '#fff', fontSize: '10px' }}>YOUR ID TAG</label>
+                <input
+                  type="text"
+                  required
+                  className="mono-text"
+                  placeholder="Crewmate Name / Email"
+                  style={{
+                    background: 'rgba(0,0,0,0.5)', border: '2px solid rgba(197, 17, 17, 0.5)',
+                    padding: '12px 16px', color: '#fff', fontSize: '16px',
+                    outline: 'none', borderRadius: '4px'
+                  }}
+                  onFocus={e => e.target.style.borderColor = '#C51111'}
+                  onBlur={e => e.target.style.borderColor = 'rgba(197, 17, 17, 0.5)'}
+                />
+              </div>
+
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                <label className="pixel-text" style={{ color: '#fff', fontSize: '10px' }}>INCIDENT LOG</label>
+                <textarea
+                  rows={4}
+                  required
+                  className="mono-text"
+                  placeholder="Where was it? Message..."
+                  style={{
+                    background: 'rgba(0,0,0,0.5)', border: '2px solid rgba(197, 17, 17, 0.5)',
+                    padding: '12px 16px', color: '#fff', fontSize: '16px',
+                    outline: 'none', borderRadius: '4px', resize: 'vertical'
+                  }}
+                  onFocus={e => e.target.style.borderColor = '#C51111'}
+                  onBlur={e => e.target.style.borderColor = 'rgba(197, 17, 17, 0.5)'}
+                />
+              </div>
+
+              <div style={{ marginTop: '16px', display: 'flex', gap: '16px' }}>
+                <button
+                  type="submit"
+                  className="report-btn"
+                  style={{ flex: 1, fontSize: '14px' }}
+                >
+                  SEND REPORT
+                </button>
+              </div>
+
+            </form>
           </div>
 
-          <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+          {/* Right Side: Contact Details */}
+          <div style={{ borderLeft: '2px dashed rgba(197, 17, 17, 0.3)', paddingLeft: '32px' }}>
+            <div className="pixel-text" style={{ color: '#00CFCF', fontSize: '12px', marginBottom: '24px', letterSpacing: '2px' }}>
+              COMMUNICATIONS DATA
+            </div>
             
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-              <label className="pixel-text" style={{ color: '#fff', fontSize: '10px' }}>YOUR ID TAG</label>
-              <input
-                type="text"
-                required
-                className="mono-text"
-                placeholder="Crewmate Name / Email"
-                style={{
-                  background: 'rgba(0,0,0,0.5)', border: '2px solid rgba(197, 17, 17, 0.5)',
-                  padding: '12px 16px', color: '#fff', fontSize: '16px',
-                  outline: 'none', borderRadius: '4px'
-                }}
-                onFocus={e => e.target.style.borderColor = '#C51111'}
-                onBlur={e => e.target.style.borderColor = 'rgba(197, 17, 17, 0.5)'}
-              />
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
+              <div className="au-panel-light" style={{ padding: '16px', border: '1px solid #00CFCF33' }}>
+                <div className="pixel-text" style={{ color: '#6B31BC', fontSize: '8px', marginBottom: '8px' }}>[COMMS]</div>
+                <div className="mono-text" style={{ color: '#FFF', fontSize: '14px' }}>rdvprasad36@gmail.com</div>
+              </div>
+
+              <div className="au-panel-light" style={{ padding: '16px', border: '1px solid #00CFCF33' }}>
+                <div className="pixel-text" style={{ color: '#6B31BC', fontSize: '8px', marginBottom: '8px' }}>[SATELLITE]</div>
+                <div className="mono-text" style={{ color: '#FFF', fontSize: '14px' }}>+91 7382612327</div>
+              </div>
+
+              <div className="au-panel-light" style={{ padding: '16px', border: '1px solid #00CFCF33' }}>
+                <div className="pixel-text" style={{ color: '#6B31BC', fontSize: '8px', marginBottom: '8px' }}>[IDENTITY]</div>
+                <div className="mono-text" style={{ color: '#FFF', fontSize: '14px' }}>rdv-prasad (LinkedIn)</div>
+              </div>
             </div>
 
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-              <label className="pixel-text" style={{ color: '#fff', fontSize: '10px' }}>INCIDENT LOG</label>
-              <textarea
-                rows={5}
-                required
-                className="mono-text"
-                placeholder="Where was it? Who was there? Message..."
-                style={{
-                  background: 'rgba(0,0,0,0.5)', border: '2px solid rgba(197, 17, 17, 0.5)',
-                  padding: '12px 16px', color: '#fff', fontSize: '16px',
-                  outline: 'none', borderRadius: '4px', resize: 'vertical'
-                }}
-                onFocus={e => e.target.style.borderColor = '#C51111'}
-                onBlur={e => e.target.style.borderColor = 'rgba(197, 17, 17, 0.5)'}
-              />
-            </div>
-
-            <div style={{ marginTop: '16px', display: 'flex', gap: '16px' }}>
-              
-              <button
-                type="button"
-                onClick={onClose}
-                style={{
-                  flex: 1, background: 'transparent', border: '2px solid #555', color: '#ccc',
-                  fontFamily: "'Press Start 2P', monospace", fontSize: '12px', padding: '16px', cursor: 'pointer',
-                  borderRadius: '4px', transition: 'all 0.2s'
-                }}
-                onMouseEnter={e => { e.target.style.background = 'rgba(255,255,255,0.1)'; }}
-                onMouseLeave={e => { e.target.style.background = 'transparent'; }}
-              >
-                CANCEL
-              </button>
-
-              <button
-                type="submit"
-                className="report-btn"
-                style={{ flex: 2, fontSize: '14px' }}
-              >
-                SEND REPORT
-              </button>
-            </div>
-
-          </form>
+            <button
+               onClick={onClose}
+               style={{
+                 marginTop: '32px', width: '100%', background: 'transparent', 
+                 border: '1px solid #C51111', color: '#C51111',
+                 fontFamily: "'Press Start 2P', monospace", fontSize: '10px', 
+                 padding: '12px', cursor: 'pointer', borderRadius: '4px'
+               }}
+            >
+              DISMISS
+            </button>
+          </div>
 
         </div>
+
       </motion.div>
     </div>
   );

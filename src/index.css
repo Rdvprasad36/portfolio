@@ -1,6 +1,36 @@
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323:wght@400&family=Share+Tech+Mono&display=swap');
 @import "tailwindcss";
 
+:root[data-theme='dark'] {
+  --au-cyan: #00CFCF;
+  --au-red: #C51111;
+  --au-blue: #132ED2;
+  --au-purple: #6B31BC;
+  --au-yellow: #F5F557;
+  --au-green: #127F2D;
+  --au-space: #0A0A1A;
+  --au-panel: #1A1A2E;
+  --au-panel-light: #16213E;
+  --au-border: #2D2D5E;
+  --au-text: #e0e0ff;
+  --au-glow-cyan: rgba(0, 207, 207, 0.5);
+}
+
+:root[data-theme='light'] {
+  --au-cyan: #008B8B;
+  --au-red: #A52A2A;
+  --au-blue: #00008B;
+  --au-purple: #483D8B;
+  --au-yellow: #BDB76B;
+  --au-green: #006400;
+  --au-space: #F0F2F5;
+  --au-panel: #FFFFFF;
+  --au-panel-light: #F8F9FA;
+  --au-border: #D1D5DB;
+  --au-text: #1F2937;
+  --au-glow-cyan: rgba(0, 139, 139, 0.2);
+}
+
 :root {
   --au-cyan: #00CFCF;
   --au-red: #C51111;
@@ -12,9 +42,7 @@
   --au-panel: #1A1A2E;
   --au-panel-light: #16213E;
   --au-border: #2D2D5E;
-  --au-glow-cyan: rgba(0, 207, 207, 0.5);
-  --au-glow-red: rgba(197, 17, 17, 0.5);
-  --au-glow-yellow: rgba(245, 245, 87, 0.5);
+  --au-text: #e0e0ff;
 }
 
 * {
@@ -30,9 +58,10 @@ html {
 body {
   font-family: 'VT323', monospace;
   background: var(--au-space);
-  color: #e0e0ff;
+  color: var(--au-text);
   overflow-x: hidden;
   font-size: 18px;
+  transition: background 0.3s, color 0.3s;
 }
 
 /* VCR Scanline overlay */
@@ -375,4 +404,20 @@ body {
 @media (max-width: 768px) {
   body { font-size: 16px; }
   .pixel-heading { font-size: 14px !important; }
+}
+/* Pixel Loader */
+.pixel-loader {
+  width: 48px;
+  height: 48px;
+  border: 5px solid #FFF;
+  border-bottom-color: var(--au-cyan);
+  border-radius: 50%;
+  display: inline-block;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+}
+
+@keyframes rotation {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }

@@ -3,26 +3,27 @@ import { useState } from 'react';
 
 const techCategories = [
   {
-    category: 'LANGUAGES & DATABASES',
+    category: 'COMMON TASK: LANGUAGES',
     color: '#00CFCF',
-    items: ['Python', 'SQL', 'C']
+    items: ['Python', 'C', 'C++', 'Java']
   },
   {
-    category: 'FRAMEWORKS & LIBRARIES',
+    category: 'WIRING (WEB)',
     color: '#F5F557',
-    items: ['Pandas', 'NumPy', 'Scikit-learn', 'TensorFlow', 'Keras', 'Flask', 'OpenCV']
+    items: ['Next.js', 'Node.js', 'TypeScript', 'React', 'Tailwind CSS']
   },
   {
-    category: 'AI / ML & NLP',
+    category: 'CALIBRATE (AI)',
     color: '#6B31BC',
-    items: ['Computer Vision (YOLOv8)', 'Generative AI', 'Gemini API', 'LLMs', 'Prompt Engineering', 'RAG', 'LangChain']
+    items: ['NLP', 'Model Deployment', 'Deep Learning', 'Generative AI', 'LLMs', 'LangChain']
   },
   {
-    category: 'TOOLS / PLATFORMS',
+    category: 'REACTOR (TOOLS)',
     color: '#FF8400',
-    items: ['Git & GitHub', 'MySQL', 'MongoDB', 'VS Code', 'Hugging Face', 'Jupyter']
+    items: ['Git', 'Docker', 'n8n Automation', 'VS Code', 'Google Cloud']
   }
 ];
+
 
 const Wires = ({ color }) => (
   <div style={{ display: 'flex', gap: '8px', alignItems: 'center', marginBottom: '16px' }}>
