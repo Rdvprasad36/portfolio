@@ -7,6 +7,8 @@ export default function Projects() {
   const { data, isAdmin, updateSection, addProject, deleteProject } = usePortfolioInfo();
   const { projects } = data;
 
+  const [insertIndex, setInsertIndex] = useState(-1);
+
   const handleUpdate = (index, field, value) => {
     const newProjects = [...projects];
     if (field === 'tech') {
@@ -35,7 +37,7 @@ export default function Projects() {
       tech: ["Tech 1", "Tech 2"],
       link: "#",
       image: null
-    });
+    }, insertIndex);
   };
 
   return (
@@ -45,21 +47,32 @@ export default function Projects() {
       exit={{ opacity: 0, y: -20 }}
       style={{ padding: '40px 20px', maxWidth: '1200px', margin: '0 auto' }}
     >
-       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '40px' }}>
+       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '40px', flexWrap: 'wrap', gap: '20px' }}>
          <h2 className="pixel-heading" style={{ color: '#6B31BC', fontSize: '28px', margin: 0 }}>PROJECT LOGS</h2>
          {isAdmin && (
-           <motion.button
-             whileHover={{ scale: 1.05, background: '#6B31BC', color: '#FFF' }}
-             whileTap={{ scale: 0.95 }}
-             onClick={addNew}
-             className="pixel-text"
-             style={{
-               background: 'transparent', border: '2px solid #6B31BC', 
-               color: '#6B31BC', padding: '10px 20px', borderRadius: '4px', cursor: 'pointer'
-             }}
-           >
-             + ADD PROJECT
-           </motion.button>
+           <div style={{ display: 'flex', gap: '10px', alignItems: 'center' }}>
+             <select 
+               value={insertIndex} 
+               onChange={(e) => setInsertIndex(parseInt(e.target.value))}
+               style={{ background: '#131920', color: '#6B31BC', border: '1px solid #6B31BC', padding: '5px', borderRadius: '4px', fontFamily: "'Share Tech Mono', monospace" }}
+             >
+               <option value="-1">Insert at End</option>
+               <option value="0">Insert at Start</option>
+               {projects.map((_, i) => i > 0 && <option key={i} value={i}>Insert at Index {i}</option>)}
+             </select>
+             <motion.button
+               whileHover={{ scale: 1.05, background: '#6B31BC', color: '#FFF' }}
+               whileTap={{ scale: 0.95 }}
+               onClick={addNew}
+               className="pixel-text"
+               style={{
+                 background: 'transparent', border: '2px solid #6B31BC', 
+                 color: '#6B31BC', padding: '10px 20px', borderRadius: '4px', cursor: 'pointer'
+               }}
+             >
+               + ADD PROJECT
+             </motion.button>
+           </div>
          )}
        </div>
        

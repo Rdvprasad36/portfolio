@@ -9,67 +9,145 @@ const defaultData = {
     email: "rdvprasad36@gmail.com",
     website: "rdvprasad36.dev",
     location: "Visakhapatnam, Andhra Pradesh",
-    summary: "Passionate and detail-oriented computer science student seeking to leverage rigorous academic background, problem-solving skills, and software development experiences to build impactful technology solutions and engage in challenging technical roles."
+    image: "/profile.jpg",
+    summary: "AI & Data Science undergraduate (CGPA 9.38/10) with hands-on experience in machine learning, full-stack development, and AI applications. Built multiple hackathon projects including assistive technologies and productivity platforms. Experienced with Python, Next.js, and NLP-based systems, and passionate about building scalable AI solutions and real-world applications."
   },
+  recentActivities: [
+    {
+      id: 1,
+      title: 'Excited to announce my new internship!',
+      date: 'August 2025',
+      content: 'Just started my journey as an AI/ML Intern at InternPro. Looking forward to building some amazing NLP-driven chat applications! 🚀 #AI #MachineLearning #Internship'
+    },
+    {
+      id: 2,
+      title: 'Successfully concluded Yuvatarang 2K26!',
+      date: 'April 2026',
+      content: 'Had an amazing time leading the planning and execution of our flagship event at VIIT. Huge shoutout to my incredible team for managing 500+ participants! 🎯 #Leadership #VIIT'
+    },
+    {
+      id: 3,
+      title: 'Finished my latest project: StudyXpert',
+      date: 'December 2025',
+      content: 'Thrilled to share that we just launched StudyXpert, a full-stack learning assistant platform built with Next.js and Node.js. Check it out! 💻 #WebDev #Nextjs'
+    }
+  ],
   socials: [
     { name: 'LinkedIn', url: 'https://linkedin.com/in/durga-venkata-prasad-rapeti-b154022b7', icon: '🔗' },
     { name: 'GitHub', url: 'https://github.com/Rdvprasad36', icon: '💻' },
     { name: 'LeetCode', url: 'https://leetcode.com/u/Rdv36', icon: '⚡' },
     { name: 'CodeChef', url: 'https://codechef.com/users/rdvprasad36', icon: '👨‍🍳' }
   ],
-  skillHighlights: [
-    { id: 1, title: "🤖 AI & Data Science", desc: "Specializing in building scalable AI solutions, machine learning models, and real-world data applications." },
-    { id: 2, title: "💻 FullStack Development", desc: "Strong foundation in web development, creating intuitive, user-friendly and scalable web applications." }
+  education: [
+    {
+      id: 1,
+      institution: "Vignan's Institute of Information Technology (VIIT), Duvvada",
+      degree: "Bachelor of Technology in Artificial Intelligence and Data Science (Pursuing) | CGPA: 9.38/10.0",
+      date: "Sep 2023 - Present",
+      coursework: "Data Structures and Algorithms • Operating Systems and Networks • Database Management Systems • Software Engineering • AI • Machine Learning • Data science • Computer Networks"
+    }
   ],
   experience: [
     {
       id: 1,
-      role: "Software Intern",
-      company: "Virtual Labs (Gachibowli, Telangana)",
-      date: "January 2024 - April 2024",
+      role: "Club Manager",
+      company: "Student Activity Council (SAC) | VIIT",
+      date: "Sep 2025 - Present",
       points: [
-        "Ensuring website functionality and user experience optimization",
-        "Managing content updates and technical maintenance"
+        "Lead planning and execution of student activities and flagship events such as “Yuvatarang 2K26,” managing sports and co-curricular events end-to-end, including scheduling, registrations, logistics, and on-ground coordination.",
+        "Initiated and led community-focused green initiatives by guiding student project teams to nearby villages for awareness drives and sustainability projects, mobilizing students to practice social responsibility beyond campus."
       ],
-      tags: ["Web Development", "Server", "Full-Stack Development", "Technical Support"]
+      tags: ["Leadership", "Event Management", "Coordination"]
     },
     {
       id: 2,
-      role: "Tech Team Member",
-      company: "Club Council, IIIT Hyderabad",
-      date: "August 2023 - Present",
+      role: "AI/ML Intern",
+      company: "InternPro",
+      date: "Jul 2025 - Aug 2025",
       points: [
-        "Maintaining clubs websites and servers for various student organizations",
-        "Adding new features to improve user engagement and experience"
+        "Built NLP-based AI interview chatbot that simulated technical interviews and automated candidate screening.",
+        "Designed and implemented ML and NLP-driven interview simulation features, enabling intelligent question generation and response analysis for more effective candidate assessment."
       ],
-      tags: ["Web Development", "Next.js", "Tailwind CSS", "FastApi"]
+      tags: ["AI", "Machine Learning", "NLP", "Python"]
+    },
+    {
+      id: 3,
+      role: "Web Development Intern",
+      company: "VaultofCodes (Remote)",
+      date: "Jun 2025 - Jul 2025",
+      points: [
+        "Completed a one-month web development internship with a primary focus on front-end development using HTML, CSS, and JavaScript.",
+        "Delivered 5 hands-on implementation tasks, translating design requirements into responsive and interactive user interfaces."
+      ],
+      tags: ["Web Development", "HTML/CSS", "JavaScript"]
+    },
+    {
+      id: 4,
+      role: "Machine Learning Intern",
+      company: "Google for Developers – EduSkills (Virtual)",
+      date: "Jan 2025 - Mar 2025",
+      points: [
+        "Completed a 10-week AI-ML virtual internship focused on core and applied machine learning.",
+        "Explored integrating AI with full stack development to build real-world applications."
+      ],
+      tags: ["Machine Learning", "Full Stack Integration", "AI"]
     }
   ],
   skillsDetailed: {
-    "Programming Languages": ["C", "C++", "JavaScript", "Python", "PHP", "TypeScript"],
-    "Frontend Development": ["HTML", "React", "Tailwind", "Next.js", "Bootstrap", "Vue.js"],
-    "Backend Development": ["FastAPI", "Flask", "Node.js"]
+    "Programming Languages": ["Python", "C", "C++", "Java", "Javascript"],
+    "Machine Learning & AI": ["Machine Learning", "Deep Learning", "Natural Language Processing (NLP)", "Data Analysis", "Model Training", "Model Deployment"],
+    "Frameworks & Libraries": ["TensorFlow", "PyTorch", "Scikit-learn", "Pandas", "NumPy"],
+    "Web Development": ["Next.js", "Node.js", "Express.js", "REST API Development", "HTML5", "CSS3"],
+    "Cloud & Databases": ["Google Cloud Platform (GCP)", "Supabase", "SQL", "NoSQL", "Database Management Systems (DBMS)"],
+    "Tools & DevOps": ["Git", "GitHub", "Docker", "Jupyter Notebook", "VS Code"],
+    "AI & Automation Tools": ["LangChain", "n8n", "AI Workflow Automation"],
+    "Platforms & Deployment": ["Vercel", "Netlify"],
+    "Currently Exploring": ["Agentic AI", "Quantum Computing"]
   },
   projects: [
     {
       id: 1,
-      title: "Among Us Portfolio",
-      description: "A themed portfolio site with CMS capabilities and page routing.",
-      tech: ["React", "Framer Motion", "Context API"],
-      link: "https://rdvprasad36.dev"
+      title: "StudyXpert",
+      description: "A full-stack learning assistant platform that helps students organize notes, track progress, and access resources from a unified dashboard. Implemented REST APIs and modular components.",
+      tech: ["TypeScript", "Next.js", "Node.js", "Vercel"],
+      link: "#"
     },
     {
       id: 2,
-      title: "AI Chatbot",
-      description: "A machine learning based chatbot for student assistance.",
-      tech: ["Python", "FastAPI", "NLP"],
+      title: "BusBuddy",
+      description: "A bus-tracking and information platform to help students monitor routes, timings, and availability in real time. Implemented a clean component-based front-end architecture.",
+      tech: ["TypeScript", "React", "Webapp"],
+      link: "#"
+    },
+    {
+      id: 3,
+      title: "BlindGo",
+      description: "Assistive system for the visually impaired using smart glasses with real-time audio navigation.",
+      tech: ["AI", "Hardware Integration", "Audio Navigation"],
+      link: "#"
+    },
+    {
+      id: 4,
+      title: "AAA",
+      description: "Child-friendly gamified learning and AI-powered storytelling platform.",
+      tech: ["AI", "Gamification", "Storytelling"],
+      link: "#"
+    },
+    {
+      id: 5,
+      title: "Verdex",
+      description: "A tool to understand the energy consumption and environmental impact of AI models.",
+      tech: ["Green AI", "Analytics", "Optimization"],
       link: "#"
     }
   ],
   achievements: [
-    "Google Cloud Skill Badge - AI Fundamentals",
-    "LeetCode 500+ Problems Solved",
-    "Top 10 in College Hackathon"
+    "CodeChef Rating: 1200 | Solved 250+ programming problems",
+    "Participated in 30+ competitive programming contests",
+    "Top 3 – Quantum Valley Hackathon 2025 (Internal Round)",
+    "National Finalist – HackVyuha 2025",
+    "Top 10 – Smart Innovation Hackathon 2025, Top 4 - SusHacks’25 VIIT",
+    "Winner – Smart India Hackathon 2024 (Internal Round)"
   ]
 };
 
@@ -79,7 +157,7 @@ export const usePortfolioInfo = () => useContext(PortfolioContext);
 
 export const PortfolioProvider = ({ children }) => {
   const [data, setData] = useState(() => {
-    const saved = localStorage.getItem('portfolioData');
+    const saved = localStorage.getItem('portfolioData_v2');
     if (saved) {
       try {
         return { ...defaultData, ...JSON.parse(saved) };
@@ -95,7 +173,7 @@ export const PortfolioProvider = ({ children }) => {
 
   // Sync to localstorage
   useEffect(() => {
-    localStorage.setItem('portfolioData', JSON.stringify({ ...data, theme }));
+    localStorage.setItem('portfolioData_v2', JSON.stringify({ ...data, theme }));
     document.documentElement.setAttribute('data-theme', theme);
   }, [data, theme]);
 
@@ -123,26 +201,67 @@ export const PortfolioProvider = ({ children }) => {
     setData(prev => ({ ...prev, [section]: newValue }));
   };
 
-  const addProject = (project) => {
-    setData(prev => ({ ...prev, projects: [...prev.projects, { ...project, id: Date.now() }] }));
+  // Insertion Logic
+  const insertItem = (arrayName, item, index = -1) => {
+    setData(prev => {
+      const newArray = [...(prev[arrayName] || [])];
+      const newItem = { ...item, id: item.id || Date.now() };
+      
+      if (index === -1 || index >= newArray.length) {
+        newArray.push(newItem);
+      } else if (index === 0) {
+        newArray.unshift(newItem);
+      } else {
+        newArray.splice(index, 0, newItem);
+      }
+      return { ...prev, [arrayName]: newArray };
+    });
   };
 
-  const deleteProject = (id) => {
-    setData(prev => ({ ...prev, projects: prev.projects.filter(p => p.id !== id) }));
+  const deleteItem = (arrayName, id) => {
+    setData(prev => ({
+      ...prev,
+      [arrayName]: (prev[arrayName] || []).filter(item => item.id !== id)
+    }));
   };
 
-  const addAchievement = (text) => {
-    setData(prev => ({ ...prev, achievements: [...prev.achievements, text] }));
+  const addProject = (project, index = -1) => insertItem('projects', project, index);
+  const deleteProject = (id) => deleteItem('projects', id);
+
+  const addExperience = (experience, index = -1) => insertItem('experience', experience, index);
+  const deleteExperience = (id) => deleteItem('experience', id);
+
+  const addAchievement = (text, index = -1) => {
+    setData(prev => {
+      const newArr = [...prev.achievements];
+      if (index === -1 || index >= newArr.length) newArr.push(text);
+      else if (index === 0) newArr.unshift(text);
+      else newArr.splice(index, 0, text);
+      return { ...prev, achievements: newArr };
+    });
   };
 
   const deleteAchievement = (index) => {
     setData(prev => ({ ...prev, achievements: prev.achievements.filter((_, i) => i !== index) }));
   };
 
+  const addActivity = (activity) => insertItem('recentActivities', activity);
+  const updateActivity = (id, updatedFields) => {
+    setData(prev => ({
+      ...prev,
+      recentActivities: prev.recentActivities.map(a => a.id === id ? { ...a, ...updatedFields } : a)
+    }));
+  };
+  const deleteActivity = (id) => deleteItem('recentActivities', id);
+
   return (
     <PortfolioContext.Provider value={{ 
       data, isAdmin, login, logout, updateProfile, updateSection, 
-      theme, toggleTheme, addProject, deleteProject, addAchievement, deleteAchievement 
+      theme, toggleTheme, 
+      addProject, deleteProject, 
+      addExperience, deleteExperience,
+      addAchievement, deleteAchievement,
+      addActivity, updateActivity, deleteActivity
     }}>
       {children}
     </PortfolioContext.Provider>

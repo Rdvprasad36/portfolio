@@ -1,0 +1,21 @@
+On branch main
+Your branch and 'origin/main' have diverged,
+and have 1 and 1 different commits each, respectively.
+  (use "git pull" if you want to integrate the remote branch with yours)
+
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+	modified:   src/components/ContactModal.jsx
+	modified:   src/components/Navbar.jsx
+	modified:   src/components/NavigationHub.jsx
+	modified:   src/context/PortfolioContext.jsx
+	modified:   src/pages/Achievements.jsx
+	modified:   src/pages/Contact.jsx
+	modified:   src/pages/Experience.jsx
+	modified:   src/pages/Projects.jsx
+	modified:   src/pages/Skills.jsx
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	git_status3.txt
+

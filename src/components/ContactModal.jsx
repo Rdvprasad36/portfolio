@@ -1,10 +1,15 @@
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 
 export default function ContactModal({ onClose }) {
+  const [sender, setSender] = useState('');
+  const [message, setMessage] = useState('');
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Simulate sending report
-    alert('Dead body reported! Message sent successfully.');
+    const subject = encodeURIComponent(`Incoming Report from ${sender}`);
+    const body = encodeURIComponent(`From: ${sender}\n\nMessage:\n${message}`);
+    window.location.href = `mailto:rdvprasad36@gmail.com?subject=${subject}&body=${body}`;
     onClose();
   };
 
@@ -44,6 +49,8 @@ export default function ContactModal({ onClose }) {
                 <input
                   type="text"
                   required
+                  value={sender}
+                  onChange={(e) => setSender(e.target.value)}
                   className="mono-text"
                   placeholder="Crewmate Name / Email"
                   style={{
@@ -61,6 +68,8 @@ export default function ContactModal({ onClose }) {
                 <textarea
                   rows={4}
                   required
+                  value={message}
+                  onChange={(e) => setMessage(e.target.value)}
                   className="mono-text"
                   placeholder="Where was it? Message..."
                   style={{

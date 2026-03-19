@@ -1,11 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { usePortfolioInfo } from '../context/PortfolioContext';
 import EditableText from '../components/EditableText';
 
 export default function Experience() {
-  const { data, updateSection } = usePortfolioInfo();
+  const { data, isAdmin, updateSection, addExperience, deleteExperience } = usePortfolioInfo();
   const { experience } = data;
+
+  const [insertIndex, setInsertIndex] = useState(-1);
+
+  const addNew = () => {
+    addExperience({
+      role: "New Role",
+      company: "New Company",
+      date: "Date",
+      points: ["Point 1", "Point 2"],
+      tags: ["Tag 1"]
+    }, insertIndex);
+  };
 
   const handleUpdate = (index, field, value) => {
     const newExp = [...experience];
@@ -24,9 +36,36 @@ export default function Experience() {
       exit={{ opacity: 0, x: -20 }}
       style={{ padding: '40px 20px', maxWidth: '1000px', margin: '0 auto' }}
     >
-      <h2 className="pixel-heading" style={{ color: '#FF8400', fontSize: '28px', textAlign: 'center', marginBottom: '40px' }}>
-        EXPERIENCE TIMELINE
-      </h2>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '40px' }}>
+        <h2 className="pixel-heading" style={{ color: '#FF8400', fontSize: '28px', textAlign: 'center', margin: 0 }}>
+          EXPERIENCE TIMELINE
+        </h2>
+        {isAdmin && (
+          <div style={{ display: 'flex', gap: '10px', alignItems: 'center' }}>
+            <select 
+              value={insertIndex} 
+              onChange={(e) => setInsertIndex(parseInt(e.target.value))}
+              style={{ background: '#131920', color: '#FF8400', border: '1px solid #FF8400', padding: '5px', borderRadius: '4px', fontFamily: "'Share Tech Mono', monospace" }}
+            >
+              <option value="-1">Insert at End</option>
+              <option value="0">Insert at Start</option>
+              {experience.map((_, i) => i > 0 && <option key={i} value={i}>Insert at Index {i}</option>)}
+            </select>
+            <motion.button
+              whileHover={{ scale: 1.05, background: '#FF8400', color: '#FFF' }}
+              whileTap={{ scale: 0.95 }}
+              onClick={addNew}
+              className="pixel-text"
+              style={{
+                background: 'transparent', border: '2px solid #FF8400', 
+                color: '#FF8400', padding: '10px 20px', borderRadius: '4px', cursor: 'pointer'
+              }}
+            >
+              + ADD EXPERIENCE
+            </motion.button>
+          </div>
+        )}
+      </div>
 
       <div style={{ position: 'relative', paddingLeft: '40px', borderLeft: '4px solid #2C3A46' }}>
         {experience.map((exp, idx) => (
@@ -44,7 +83,19 @@ export default function Experience() {
               borderRadius: '50%', border: '4px solid #131920', boxShadow: '0 0 10px #FF8400'
             }} />
 
-            <div className="au-panel" style={{ padding: '24px' }}>
+            <div className="au-panel" style={{ padding: '24px', position: 'relative' }}>
+              {isAdmin && (
+                <button 
+                  onClick={() => deleteExperience(exp.id)}
+                  style={{
+                    position: 'absolute', top: '10px', right: '10px', zIndex: 10,
+                    background: '#FF4444', color: '#FFF', border: 'none', 
+                    borderRadius: '4px', padding: '5px 8px', cursor: 'pointer', fontSize: '10px'
+                  }}
+                >
+                  DELETE
+                </button>
+              )}
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: '10px' }}>
                 <div>
                   <h3 className="pixel-heading" style={{ color: '#FFF', fontSize: '16px' }}>
