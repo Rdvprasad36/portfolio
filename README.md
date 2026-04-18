@@ -1,4 +1,7 @@
-# Mymeet Portfolio - Among Us Edition
+# portfolio
+>>>>>>> 3e8bd200d4d31e6c0fee7b1efbc998e27c963120
+=======
+# Mymeet Portfolio - Among Us Edition (Rdvprasad36/portfolio)
 
 ## Project Overview
 This is a Vite + React portfolio website themed around **Among Us** with space/crew mate aesthetics, pixel art styling, and interactive "Emergency Meeting" elements.
@@ -93,5 +96,9 @@ portfolio/
 2. Updated `index.html` favicon to `vite.png`
 3. Created this comprehensive README.md
 4. Fixed asset warnings (use `/white.png` not `/public/white.png`)
+5. Connected to GitHub repo: https://github.com/Rdvprasad36/portfolio
 
 **Site is now running with Among Us theme intact!** 🚀👨‍🚀
+=======
+# portfolio
+>>>>>>> 3e8bd200d4d31e6c0fee7b1efbc998e27c963120
