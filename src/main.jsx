@@ -4,13 +4,17 @@ import { BrowserRouter } from 'react-router-dom'
 import { PortfolioProvider } from './context/PortfolioContext'
 import './index.css'
 import App from './App.jsx'
+import ErrorBoundary from './components/ErrorBoundary.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <PortfolioProvider>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
+      <ErrorBoundary>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </ErrorBoundary>
     </PortfolioProvider>
   </StrictMode>,
 )
+

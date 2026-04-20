@@ -7,7 +7,7 @@ import { usePortfolioInfo } from '../context/PortfolioContext';
 export default function Navbar() {
   const navigate = useNavigate();
   const location = useLocation();
-  const { isAdmin, logout, theme } = usePortfolioInfo();
+const { isAdmin, logout, theme, toggleTheme } = usePortfolioInfo();
   const [showAdminLogin, setShowAdminLogin] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -39,7 +39,23 @@ export default function Navbar() {
           style={{ cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '12px', flex: 1 }}
           onClick={() => { window.scrollTo({ top: 0, behavior: 'smooth' }); navigate('/'); setIsMobileMenuOpen(false); }}
         >
-          <span className="pixel-heading glow-cyan" style={{ fontSize: '18px', color: theme === 'dark' ? '#FFF' : '#333', letterSpacing: '2px' }}>RDV</span>
+          <motion.img 
+            src={theme === 'dark' ? '/white.png' : '/black.png'}
+            alt="RDV Logo"
+            style={{ width: '40px', height: '40px' }}
+            initial={{ scale: 0, rotate: 180 }}
+            animate={{ scale: 1, rotate: 0 }}
+            transition={{ type: 'spring', stiffness: 200, damping: 10 }}
+          />
+          <motion.span 
+            className="pixel-heading glow-cyan" 
+            style={{ fontSize: '18px', color: theme === 'dark' ? '#FFF' : '#333', letterSpacing: '2px' }} 
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.2, type: 'spring' }}
+          >
+            RDV
+          </motion.span>
         </motion.div>
 
         {/* Navigation Links - Desktop View */}
@@ -78,6 +94,25 @@ export default function Navbar() {
         
         {/* Right Actions */}
         <div style={{ display: 'flex', gap: '20px', alignItems: 'center', justifyContent: 'flex-end', flex: 1 }}>
+          <motion.button 
+            onClick={toggleTheme}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            style={{
+              background: theme === 'dark' ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.1)',
+              border: `1px solid ${theme === 'dark' ? '#FFF' : '#000'}`,
+              color: theme === 'dark' ? '#FFF' : '#000',
+              padding: '8px 16px',
+              borderRadius: '20px',
+              cursor: 'pointer',
+              fontFamily: 'monospace',
+              fontSize: '12px',
+              transition: 'all 0.3s'
+            }}
+            className="hidden md:flex"
+          >
+            {theme === 'dark' ? 'LIGHT' : 'DARK'}
+          </motion.button>
           <motion.a
             href="/resume.pdf"
             download="resume.pdf"

@@ -4,8 +4,6 @@ import { AnimatePresence } from 'framer-motion';
 import SpaceBackground from './components/SpaceBackground';
 import VCROverlay from './components/VCROverlay';
 import Navbar from './components/Navbar';
-import IntroSequence from './components/IntroSequence';
-import { useState } from 'react';
 
 // Lazy load pages for better performance and route isolation
 const Overview = lazy(() => import('./components/NavigationHub'));
@@ -16,7 +14,6 @@ const Achievements = lazy(() => import('./pages/Achievements'));
 const Contact = lazy(() => import('./pages/Contact'));
 
 function App() {
-  const [showIntro, setShowIntro] = useState(true);
   const location = useLocation();
 
   return (
@@ -27,7 +24,7 @@ function App() {
       <main style={{ position: 'relative', minHeight: '100vh', zIndex: 10, paddingTop: '70px' }}>
         <Navbar />
         
-        <Suspense fallback={<div className="pixel-loader">LOADING DATA...</div>}>
+        <Suspense fallback={<div className="pixel-loader" style={{ color: 'var(--au-text)', fontSize: '24px', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '20px', padding: '40px' }}>R D V PRASAD<br/>PORTFOLIO</div>} > 
           <AnimatePresence mode="wait">
             <Routes location={location} key={location.pathname}>
               <Route path="/" element={<Overview />} />
@@ -49,15 +46,10 @@ function App() {
             REPORT
           </button>
         </div>
-
-        {/* Intro Sequence Overlay */}
-        <AnimatePresence>
-          {showIntro && <IntroSequence onComplete={() => setShowIntro(false)} />}
-        </AnimatePresence>
-        
       </main>
     </>
   );
 }
 
 export default App;
+
