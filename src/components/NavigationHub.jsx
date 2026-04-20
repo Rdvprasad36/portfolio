@@ -21,7 +21,7 @@ function NavButton({ btn }) {
       const audio = new Audio('/task-sound.mp3');
       audio.volume = 0.2;
       audio.play();
-    } catch (e) {}
+    } catch {}
   };
 
   return (
@@ -51,11 +51,12 @@ function NavButton({ btn }) {
         </span>
       </div>
       <div style={{
-        width: '24px', height: '24px', background: 'rgba(255,255,255,0.9)', 
+background: '#333', 
         borderRadius: '50%', display: 'flex', justifyContent: 'center', alignItems: 'center'
       }}>
-        <span className="pixel-text" style={{ fontSize: '12px', color: '#1A242B' }}>?</span>
+        <span className="pixel-text" style={{ fontSize: '12px', color: '#FFF' }}>? </span>
       </div>
+
     </motion.div>
   );
 }

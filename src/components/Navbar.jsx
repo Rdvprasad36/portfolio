@@ -48,14 +48,17 @@ const { isAdmin, logout, theme, toggleTheme } = usePortfolioInfo();
             transition={{ type: 'spring', stiffness: 200, damping: 10 }}
           />
           <motion.span 
-            className="pixel-heading glow-cyan" 
+className="mono-text"
+
+
             style={{ fontSize: '18px', color: theme === 'dark' ? '#FFF' : '#333', letterSpacing: '2px' }} 
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.2, type: 'spring' }}
           >
-            RDV
+            RDV.DEV
           </motion.span>
+
         </motion.div>
 
         {/* Navigation Links - Desktop View */}
@@ -65,10 +68,11 @@ const { isAdmin, logout, theme, toggleTheme } = usePortfolioInfo();
             return (
               <div key={link.path} style={{ position: 'relative' }}>
                 <motion.a
-                  whileHover={{ color: '#00CFCF' }}
+whileHover={{ scale: 1.05 }}
                   style={{
-                    color: isActive ? '#00CFCF' : '#A0AAB2',
-                    fontFamily: "'Share Tech Mono', monospace",
+                    color: isActive ? '#FFF' : '#CCC',
+                    fontFamily: 'monospace',
+
                     fontSize: '12px', cursor: 'pointer', transition: 'color 0.3s',
                     textDecoration: 'none', display: 'block', fontWeight: isActive ? 'bold' : 'normal',
                     padding: '8px 0'

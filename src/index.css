@@ -1,8 +1,9 @@
 @import "tailwindcss";
 
 :root[data-theme='dark'] {
-  --au-cyan: #00CFCF;
-  --au-red: #C51111;
+--au-accent: #FFF;
+  --au-red: #333;
+
   --au-blue: #132ED2;
   --au-purple: #6B31BC;
   --au-yellow: #F5F557;
@@ -147,11 +148,20 @@ body {
 }
 
 /* Pixel heading */
-.pixel-heading {\n  font-family: 'Courier New', monospace;\n  text-shadow: 2px 2px 0px rgba(0,0,0,0.8);\n}
+.pixel-heading {
+  font-family: 'Courier New', monospace;
+  text-shadow: 2px 2px 0px rgba(0,0,0,0.8);
+}
 
-.pixel-text {\n  font-family: 'Courier New', monospace;\n  font-size: 10px;\n  line-height: 1.8;\n}
+.pixel-text {
+  font-family: 'Courier New', monospace;
+  font-size: 10px;
+  line-height: 1.8;
+}
 
-.mono-text {\n  font-family: 'Courier New', monospace;\n}
+.mono-text {
+  font-family: 'Courier New', monospace;
+}
 
 /* Glow effects */
 .glow-cyan {

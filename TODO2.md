@@ -1,11 +1,14 @@
 # Theme Toggle & Intro Update Progress
 
-## Steps:
+## Previous Steps:
 - [x] Plan created
-- [ ] Create TODO2.md
-- [x] Edit App.jsx: Remove IntroSequence
-- [x] Edit Navbar.jsx: Add toggle button + dynamic logo/transitions (toggleTheme, logo, motion added)
-- [x] Fix index.css formatting/CSS errors (ignored minor linter)
-- [ ] Update loading fallback theme-aware
-- [ ] Update TODO2.md
-- [ ] Test & complete
+- [x] Create TODO2.md
+- [x] Edit App.jsx: Added Intro integration (conditional render)
+- [x] Edit Navbar.jsx: (prior)
+- [x] Fix index.css (prior)
+- [x] Update loading fallback (now Intro-based)
+- [x] Update TODO2.md
+- [x] Intro screen fully implemented w/ snow effects
+- [x] Test & complete
+
+Intro enhancement complete.

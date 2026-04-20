@@ -1,9 +1,12 @@
-import { Suspense, lazy } from 'react';
+import { Suspense, lazy, useState } from 'react';
+
 import { Routes, Route, useLocation } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
 import SpaceBackground from './components/SpaceBackground';
 import VCROverlay from './components/VCROverlay';
 import Navbar from './components/Navbar';
+import Intro from './components/Intro';
+
 
 // Lazy load pages for better performance and route isolation
 const Overview = lazy(() => import('./components/NavigationHub'));
@@ -15,6 +18,15 @@ const Contact = lazy(() => import('./pages/Contact'));
 
 function App() {
   const location = useLocation();
+  const [introShown, setIntroShown] = useState(true);
+
+  const handleIntroEnd = () => {
+    setIntroShown(false);
+  };
+
+  if (introShown) {
+    return <Intro onComplete={handleIntroEnd} />;
+  }
 
   return (
     <>
@@ -24,7 +36,8 @@ function App() {
       <main style={{ position: 'relative', minHeight: '100vh', zIndex: 10, paddingTop: '70px' }}>
         <Navbar />
         
-        <Suspense fallback={<div className="pixel-loader" style={{ color: 'var(--au-text)', fontSize: '24px', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '20px', padding: '40px' }}>R D V PRASAD<br/>PORTFOLIO</div>} > 
+<Suspense fallback={null}>
+
           <AnimatePresence mode="wait">
             <Routes location={location} key={location.pathname}>
               <Route path="/" element={<Overview />} />
@@ -37,7 +50,7 @@ function App() {
           </AnimatePresence>
         </Suspense>
 
-        {/* Global Floating Report Button */}
+        { /* Global Floating Report Button */ }
         <div style={{ position: 'fixed', bottom: 32, right: 32, zIndex: 100 }}>
           <button
             onClick={() => window.location.href = '/contact'}
