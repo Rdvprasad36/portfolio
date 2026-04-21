@@ -23,7 +23,9 @@ function NavButton({ btn }) {
       const audio = new Audio('/task-sound.mp3');
       audio.volume = 0.2;
       audio.play();
-    } catch {}
+    } catch {
+      // ignore audio playback failures
+    }
   };
 
   return (
@@ -65,7 +67,9 @@ background: '#333',
 
 export default function NavigationHub() {
   const { data, isAdmin, isLoading, updateProfile, addActivity, updateActivity, deleteActivity } = usePortfolioInfo();
-  const { profile, recentActivities } = data || {};
+  const profile = data?.profile || {};
+  const recentActivities = data?.recentActivities || [];
+
   
   if (isLoading) {
     return <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '80vh', color: '#00CFCF' }}>
@@ -147,7 +151,8 @@ export default function NavigationHub() {
             {/* Profile Side */}
             <div style={{ flex: '1', minWidth: '300px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
               <div style={{ position: 'relative', background: '#A6B6C1', padding: '12px', borderRadius: '16px', border: '6px solid #637785', boxShadow: '0 8px 0 #3D4A52' }}>
-                <img src={profile.image || "/profile.jpg"} alt="Profile" style={{ width: '180px', height: '180px', borderRadius: '8px', objectFit: 'cover' }} />
+<img src={profile?.image_url || "/profile.jpg"} alt="Profile" style={{ width: '180px', height: '180px', borderRadius: '8px', objectFit: 'cover' }} />
+
                 {isAdmin && (
                   <label style={{ position: 'absolute', bottom: '10px', right: '10px', background: 'rgba(0,0,0,0.6)', padding: '8px', borderRadius: '50%', cursor: 'pointer', color: '#FFF' }}>
                     📷
@@ -260,7 +265,8 @@ export default function NavigationHub() {
                               👨‍🚀
                             </div>
                             <div>
-                              <div className="mono-text" style={{ color: '#FFF', fontWeight: 'bold' }}>{profile.name}</div>
+  <div className="mono-text" style={{ color: '#FFF', fontWeight: 'bold' }}>{profile?.name || 'RDV'}</div>
+
                               <div className="mono-text" style={{ color: '#A0AAB2', fontSize: '12px' }}>{recentActivities[currentActivitySlide]?.date}</div>
                             </div>
                           </div>

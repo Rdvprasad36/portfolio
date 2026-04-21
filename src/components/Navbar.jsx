@@ -2,12 +2,10 @@ import { useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useNavigate, useLocation } from 'react-router-dom';
 import AdminLoginModal from './AdminLoginModal';
-import { usePortfolioInfo } from '../context/PortfolioContext';
 
 export default function Navbar() {
   const navigate = useNavigate();
   const location = useLocation();
-  const { isAdmin, logout } = usePortfolioInfo();
   const [showAdminLogin, setShowAdminLogin] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -110,26 +108,25 @@ export default function Navbar() {
         {/* Right Actions */}
         <div style={{ display: 'flex', gap: '12px', alignItems: 'center' }}>
           <motion.button 
-            whileHover={{ scale: 1.05, boxShadow: '0 0 20px rgba(1,44,255,0.6)' }}
+            whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             style={{
-              background: 'rgba(1,44,255,0.1)', 
-              border: '2px solid #012cff',
-              padding: '10px 20px', 
+              background: 'rgba(255,255,255,0.1)', 
+              border: '1px solid rgba(255,255,255,0.3)',
+              padding: '12px 24px', 
               borderRadius: '12px', 
-              color: '#012cff',
-              fontFamily: 'Times New Roman, serif', 
-              fontSize: '12px',
+              color: 'white',
+              fontFamily: 'serif', 
+              fontSize: '14px',
               cursor: 'pointer', 
-              fontWeight: 600,
-              transition: 'all 0.3s ease',
-              backdropFilter: 'blur(10px)'
+              fontWeight: 500
             }}
             className="hidden md:flex"
-            onClick={() => setShowAdminLogin(true)}
+            onClick={() => navigate('/signin')}
           >
             SIGN IN
           </motion.button>
+
 
           {/* Hamburger Menu Icon */}
           <div className="md:hidden">

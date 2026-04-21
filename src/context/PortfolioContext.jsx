@@ -1,50 +1,8 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import { supabase } from '../lib/supabase';
 
-// Default data for static or fallback content
-const defaultData = {
+// No hardcoded defaults - all data from DB
 
-  profile: {
-    name: "Durga Venkata Prasad Rapeti",
-    role: "AI & Data Science Student @ JNTUK | Full Stack Developer",
-    phone: "+91 73826 12327",
-    email: "rdvprasad36@gmail.com",
-    website: "rdvprasad36.dev",
-    location: "Visakhapatnam, Andhra Pradesh",
-    image: "/profile.jpg",
-    summary: "AI & Data Science undergraduate (CGPA 9.38/10) with hands-on experience in machine learning, full-stack development, and AI applications. Built multiple hackathon projects including assistive technologies and productivity platforms. Experienced with Python, Next.js, and NLP-based systems, and passionate about building scalable AI solutions and real-world applications."
-  },
-  socials: [
-    { name: 'LinkedIn', url: 'https://linkedin.com/in/durga-venkata-prasad-rapeti-b154022b7', icon: '🔗' },
-    { name: 'GitHub', url: 'https://github.com/Rdvprasad36', icon: '💻' },
-    { name: 'LeetCode', url: 'https://leetcode.com/u/Rdv36', icon: '⚡' },
-    { name: 'CodeChef', url: 'https://codechef.com/users/rdvprasad36', icon: '👨‍🍳' }
-  ],
-  education: [
-    {
-      id: 1,
-      institution: "Vignan's Institute of Information Technology (VIIT), Duvvada",
-      degree: "Bachelor of Technology in Artificial Intelligence and Data Science (Pursuing) | CGPA: 9.38/10.0",
-      date: "Sep 2023 - Present",
-      coursework: "Data Structures and Algorithms • Operating Systems and Networks • Database Management Systems • Software Engineering • AI • Machine Learning • Data science • Computer Networks"
-    }
-  ],
-  skillsDetailed: {
-    "Programming Languages": ["Python", "C", "C++", "Java", "Javascript"],
-    "Machine Learning & AI": ["Machine Learning", "Deep Learning", "Natural Language Processing (NLP)", "Data Analysis", "Model Training", "Model Deployment"],
-    "Frameworks & Libraries": ["TensorFlow", "PyTorch", "Scikit-learn", "Pandas", "NumPy"],
-    "Web Development": ["Next.js", "Node.js", "Express.js", "REST API Development", "HTML5", "CSS3"],
-    "Cloud & Databases": ["Google Cloud Platform (GCP)", "Supabase", "SQL", "NoSQL", "Database Management Systems (DBMS)"],
-    "Tools & DevOps": ["Git", "GitHub", "Docker", "Jupyter Notebook", "VS Code"],
-    "AI & Automation Tools": ["LangChain", "n8n", "AI Workflow Automation"],
-    "Platforms & Deployment": ["Vercel", "Netlify"],
-    "Currently Exploring": ["Agentic AI", "Quantum Computing"]
-  },
-  recentActivities: [],
-  experience: [],
-  projects: [],
-  achievements: []
-};
 
 const PortfolioContext = createContext();
 
@@ -52,7 +10,19 @@ const PortfolioContext = createContext();
 export const usePortfolioInfo = () => useContext(PortfolioContext);
 
 export const PortfolioProvider = ({ children }) => {
-  const [data, setData] = useState(defaultData);
+  const [data, setData] = useState({
+    profile: null,
+    socials: [],
+    overview_sections: [],
+    education: [],
+    skills: [],
+    posts: [],
+    experience: [],
+    projects: [],
+    achievements: [],
+    recentActivities: []
+  });
+
 
   const [isAdmin, setIsAdmin] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
@@ -76,20 +46,47 @@ export const PortfolioProvider = ({ children }) => {
       setIsLoading(true);
       try {
         // Fetch conditionally, fallback to default if fails (e.g. Supabase not setup yet)
-        const [projectsRes, experienceRes, activitiesRes, achievementsRes] = await Promise.all([
-          supabase.from('projects').select('*').order('id', { ascending: true }).catch(() => ({ data: null })),
-          supabase.from('experience').select('*').order('id', { ascending: true }).catch(() => ({ data: null })),
-          supabase.from('activities').select('*').order('id', { ascending: true }).catch(() => ({ data: null })),
-          supabase.from('achievements').select('*').order('id', { ascending: true }).catch(() => ({ data: null }))
-        ]);
+        const fetches = [
+          supabase.from('profile').select('*').single(),
+          supabase.from('socials').select('*').order('order_num'),
+          supabase.from('overview_sections').select('*').order('order_num'),
+          supabase.from('education').select('*').order('order_num'),
+          supabase.from('skills').select('*').order('order_num'),
+          supabase.from('posts').select('*').order('order_num'),
+          supabase.from('projects').select('*').order('order_num'),
+          supabase.from('experience').select('*').order('order_num'),
+          supabase.from('achievements').select('*').order('order_num'),
+          supabase.from('activities').select('*').order('id')
+        ];
+        const results = await Promise.all(fetches.map(p => p.catch(e => ({ data: null, error: e }))));
+        const [
+          profileRes,
+          socialsRes,
+          overviewRes,
+          educationRes,
+          skillsRes,
+          postsRes,
+          projectsRes,
+          experienceRes,
+          achievementsRes,
+          activitiesRes
+        ] = results;
 
-        setData(prev => ({
-          ...prev,
-          projects: projectsRes.data && projectsRes.data.length > 0 ? projectsRes.data : prev.projects,
-          experience: experienceRes.data && experienceRes.data.length > 0 ? experienceRes.data : prev.experience,
-          recentActivities: activitiesRes.data && activitiesRes.data.length > 0 ? activitiesRes.data : prev.recentActivities,
-          achievements: achievementsRes.data && achievementsRes.data.length > 0 ? achievementsRes.data.map(a => a.content) : prev.achievements
-        }));
+
+
+        setData({
+          profile: profileRes.data,
+          socials: socialsRes.data || [],
+          overview_sections: overviewRes.data || [],
+          education: educationRes.data || [],
+          skills: skillsRes.data || [],
+          posts: postsRes.data || [],
+          projects: projectsRes.data || [],
+          experience: experienceRes.data || [],
+          achievements: achievementsRes.data || [],
+          recentActivities: activitiesRes.data || []
+        });
+
       } catch (e) {
         console.error("Error fetching from Supabase, operating with fallback data.", e);
       } finally {
@@ -138,9 +135,14 @@ export const PortfolioProvider = ({ children }) => {
     // Future enhancement: Save profile to Supabase as well
   };
 
-  const updateSection = (section, newValue) => {
+  const updateSection = async (section, newValue) => {
     setData(prev => ({ ...prev, [section]: newValue }));
+    for (const item of newValue) {
+      const { error } = await supabase.from(section).upsert(item);
+      if (error) console.error(`${section} update failed:`, error);
+    }
   };
+
 
   // --- Remote CRUD Operations ---
 
