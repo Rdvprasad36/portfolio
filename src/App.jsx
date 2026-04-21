@@ -1,9 +1,10 @@
 
 
-import { lazy, Suspense } from 'react';
+import React, { lazy, Suspense, useState } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
 import Navbar from './components/Navbar';
+import Intro from './components/Intro';
 
 // Lazy load pages
 const Overview = lazy(() => import('./components/NavigationHub'));
@@ -17,6 +18,15 @@ const AdminDashboard = lazy(() => import('./pages/AdminDashboard'));
 
 function App() {
   const location = useLocation();
+  const [introShown, setIntroShown] = useState(true);
+
+  const handleIntroEnd = () => {
+    setIntroShown(false);
+  };
+
+  if (introShown) {
+    return <Intro onComplete={handleIntroEnd} />;
+  }
 
   return (
     <>
@@ -38,6 +48,7 @@ function App() {
     </>
   );
 }
+
 
 export default App;
 

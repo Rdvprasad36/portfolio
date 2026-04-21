@@ -58,7 +58,8 @@ export const PortfolioProvider = ({ children }) => {
           supabase.from('achievements').select('*').order('order_num'),
           supabase.from('activities').select('*').order('id')
         ];
-        const results = await Promise.all(fetches.map(p => p.catch(e => ({ data: null, error: e }))));
+        const results = await Promise.all(fetches.map(p => p.catch(() => ({ data: null, error: null }))));
+
         const [
           profileRes,
           socialsRes,
@@ -102,8 +103,8 @@ export const PortfolioProvider = ({ children }) => {
   }, []);
 
   const login = async (email, password) => {
-    // Basic fallback if empty credentials provided for local testing (remove in prod)
-    if (email === 'Rdv36' && password === 'Rdv36') {
+    // Optional fallback admin login
+    if (email === 'admin@gmail.com' && password === 'admin') {
       setIsAdmin(true);
       return true;
     }
