@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { AnimatePresence } from 'framer-motion';
 import { useNavigate, useLocation } from 'react-router-dom';
 import AdminLoginModal from './AdminLoginModal';
 import { usePortfolioInfo } from '../context/PortfolioContext';
@@ -7,7 +7,7 @@ import { usePortfolioInfo } from '../context/PortfolioContext';
 export default function Navbar() {
   const navigate = useNavigate();
   const location = useLocation();
-const { isAdmin, logout, theme, toggleTheme } = usePortfolioInfo();
+const { isAdmin, logout } = usePortfolioInfo();
   const [showAdminLogin, setShowAdminLogin] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -24,9 +24,8 @@ const { isAdmin, logout, theme, toggleTheme } = usePortfolioInfo();
     <>
       <nav style={{
         position: 'fixed', top: 0, left: 0, right: 0, height: '70px',
-        background: theme === 'dark' ? 'rgba(10, 17, 22, 0.95)' : 'rgba(240, 245, 250, 0.95)', 
-        backdropFilter: 'blur(10px)',
-        borderBottom: theme === 'dark' ? '1px solid rgba(255, 255, 255, 0.05)' : '1px solid rgba(0, 0, 0, 0.05)', 
+        background: 'rgba(10, 17, 22, 0.95)', 
+
         display: 'flex', alignItems: 'center',
         justifyContent: 'space-between', padding: '0 40px', zPr: 1000,
         zIndex: 1000
@@ -40,7 +39,7 @@ const { isAdmin, logout, theme, toggleTheme } = usePortfolioInfo();
           onClick={() => { window.scrollTo({ top: 0, behavior: 'smooth' }); navigate('/'); setIsMobileMenuOpen(false); }}
         >
           <motion.img 
-            src={theme === 'dark' ? '/white.png' : '/black.png'}
+            src="/white.png"
             alt="RDV Logo"
             style={{ width: '40px', height: '40px' }}
             initial={{ scale: 0, rotate: 180 }}
@@ -51,7 +50,7 @@ const { isAdmin, logout, theme, toggleTheme } = usePortfolioInfo();
 className="mono-text"
 
 
-            style={{ fontSize: '18px', color: theme === 'dark' ? '#FFF' : '#333', letterSpacing: '2px' }} 
+            style={{ fontSize: '18px', color: '#FFF', letterSpacing: '2px' }} 
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.2, type: 'spring' }}
@@ -72,7 +71,6 @@ whileHover={{ scale: 1.05 }}
                   style={{
                     color: isActive ? '#FFF' : '#CCC',
                     fontFamily: 'monospace',
-
                     fontSize: '12px', cursor: 'pointer', transition: 'color 0.3s',
                     textDecoration: 'none', display: 'block', fontWeight: isActive ? 'bold' : 'normal',
                     padding: '8px 0'
@@ -98,25 +96,7 @@ whileHover={{ scale: 1.05 }}
         
         {/* Right Actions */}
         <div style={{ display: 'flex', gap: '20px', alignItems: 'center', justifyContent: 'flex-end', flex: 1 }}>
-          <motion.button 
-            onClick={toggleTheme}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            style={{
-              background: theme === 'dark' ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.1)',
-              border: `1px solid ${theme === 'dark' ? '#FFF' : '#000'}`,
-              color: theme === 'dark' ? '#FFF' : '#000',
-              padding: '8px 16px',
-              borderRadius: '20px',
-              cursor: 'pointer',
-              fontFamily: 'monospace',
-              fontSize: '12px',
-              transition: 'all 0.3s'
-            }}
-            className="hidden md:flex"
-          >
-            {theme === 'dark' ? 'LIGHT' : 'DARK'}
-          </motion.button>
+
           <motion.a
             href="/resume.pdf"
             download="resume.pdf"
@@ -172,7 +152,7 @@ whileHover={{ scale: 1.05 }}
             <motion.button 
               whileTap={{ scale: 0.8 }}
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} 
-              style={{ background: 'transparent', border: 'none', color: theme === 'dark' ? '#FFF' : '#333', fontSize: '28px', cursor: 'pointer' }}
+              style={{ background: 'transparent', border: 'none', color: '#FFF', fontSize: '28px', cursor: 'pointer' }}
             >
               {isMobileMenuOpen ? '✕' : '☰'}
             </motion.button>
@@ -190,9 +170,8 @@ whileHover={{ scale: 1.05 }}
             transition={{ type: 'spring', damping: 25, stiffness: 200 }}
             style={{
               position: 'fixed', top: 0, left: 0, right: 0, bottom: 0,
-              background: theme === 'dark' ? 'rgba(10, 17, 22, 0.98)' : 'rgba(240, 245, 250, 0.98)',
-              backdropFilter: 'blur(15px)',
-              zIndex: 999, display: 'flex', flexDirection: 'column',
+              background: 'rgba(10, 17, 22, 0.98)',
+
               paddingTop: '100px', alignItems: 'center'
             }}
             className="md:hidden"

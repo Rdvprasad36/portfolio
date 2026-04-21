@@ -1,6 +1,6 @@
 // framer-motion used for animations
 
-import { motion } from 'framer-motion';
+import { motion as Motion } from 'framer-motion';
 
 const starPositions = Array.from({ length: 50 }, (_, i) => ({
   top: `${(i * 137.5) % 100}%`,
@@ -13,7 +13,7 @@ const starPositions = Array.from({ length: 50 }, (_, i) => ({
 
 export default function Loading() {
   return (
-    <motion.div
+    <Motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
@@ -35,7 +35,7 @@ export default function Loading() {
       {/* Snowfall background */}
       <div style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', overflow: 'hidden', pointerEvents: 'none' }}>
         {starPositions.map((pos, index) => (
-          <motion.div
+          <Motion.div
             key={index}
             className="star"
             style={{
@@ -61,7 +61,7 @@ export default function Loading() {
         ))}
       </div>
 
-      <motion.img 
+      <Motion.img 
         src="/white.png"
         alt="RDV Logo"
         style={{ width: '140px', height: '140px', marginBottom: '40px', filter: 'drop-shadow(0 0 10px rgba(255,255,255,0.5))' }}
@@ -75,7 +75,7 @@ export default function Loading() {
         }}
       />
       
-      <motion.div
+      <Motion.div
         style={{ fontSize: '2.2rem', letterSpacing: '0.3em', margin: 0, textAlign: 'center', textShadow: '0 0 20px rgba(255,255,255,0.8)' }}
         animate={{ y: [0, -15, 0] }}
         transition={{ 
@@ -83,16 +83,16 @@ export default function Loading() {
         }}
       >
         R D V PRASAD PORTFOLIO
-      </motion.div>
+      </Motion.div>
       
-      <motion.div
+      <Motion.div
         style={{ fontSize: '1.1rem', marginTop: '10px', opacity: 0.9, letterSpacing: '0.1em', textShadow: '0 0 10px rgba(255,255,255,0.6)' }}
         animate={{ opacity: [0.6, 1, 0.6] }}
         transition={{ duration: 2, repeat: Infinity }}
       >
         FULL STACK DEVELOPER
-      </motion.div>
-    </motion.div>
+      </Motion.div>
+    </Motion.div>
   );
 }
 

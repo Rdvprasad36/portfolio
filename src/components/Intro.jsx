@@ -3,6 +3,8 @@ import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import Loading from './Loading';
 
+const MotionDiv = motion.div;
+
 export default function Intro({ onComplete }) {
   const [showSnow, setShowSnow] = useState(true);
 
@@ -20,7 +22,7 @@ export default function Intro({ onComplete }) {
   }, []);
 
   return (
-    <motion.div
+    <MotionDiv
       className="intro-container"
       initial={{ opacity: 1 }}
       animate={showSnow ? { opacity: 1 } : { opacity: 0 }}
@@ -39,7 +41,7 @@ export default function Intro({ onComplete }) {
     >
       {showSnow && <SnowCanvas />}
       <Loading />
-    </motion.div>
+    </MotionDiv>
   );
 }
 

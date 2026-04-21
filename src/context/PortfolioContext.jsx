@@ -47,17 +47,14 @@ const defaultData = {
 
 const PortfolioContext = createContext();
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const usePortfolioInfo = () => useContext(PortfolioContext);
 
 export const PortfolioProvider = ({ children }) => {
-  const [data, setData] = useState(() => {
-    const savedTheme = localStorage.getItem('portfolioTheme');
-    return { ...defaultData, theme: savedTheme || 'dark' };
-  });
+  const [data, setData] = useState(defaultData);
 
   const [isAdmin, setIsAdmin] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
-  const [theme, setTheme] = useState(data.theme || 'dark');
 
   useEffect(() => {
     // Check initial auth state
@@ -103,9 +100,8 @@ export const PortfolioProvider = ({ children }) => {
   }, []);
 
   useEffect(() => {
-    localStorage.setItem('portfolioTheme', theme);
-    document.documentElement.setAttribute('data-theme', theme);
-  }, [theme]);
+    document.documentElement.setAttribute('data-theme', 'dark');
+  }, []);
 
   const login = async (email, password) => {
     // Basic fallback if empty credentials provided for local testing (remove in prod)
@@ -115,7 +111,7 @@ export const PortfolioProvider = ({ children }) => {
     }
     
     // Proper Supabase Auth
-    const { data, error } = await supabase.auth.signInWithPassword({
+    const { data: _data, error } = await supabase.auth.signInWithPassword({
       email,
       password,
     });
@@ -134,9 +130,7 @@ export const PortfolioProvider = ({ children }) => {
     setIsAdmin(false);
   };
 
-  const toggleTheme = () => {
-    setTheme(prev => prev === 'dark' ? 'light' : 'dark');
-  };
+
 
   const updateProfile = (key, value) => {
     setData(prev => ({ ...prev, profile: { ...prev.profile, [key]: value } }));
@@ -269,7 +263,6 @@ export const PortfolioProvider = ({ children }) => {
   return (
     <PortfolioContext.Provider value={{ 
       data, isAdmin, isLoading, login, logout, updateProfile, updateSection, 
-      theme, toggleTheme, 
       addProject, deleteProject, 
       addExperience, deleteExperience,
       addAchievement, deleteAchievement,

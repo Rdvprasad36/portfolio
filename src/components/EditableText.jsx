@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { usePortfolioInfo } from '../context/PortfolioContext';
-import { motion } from 'framer-motion';
+import { motion as Motion } from 'framer-motion';
 
 // A component that wraps text and allows editing it if the user is an admin
 export default function EditableText({ 
@@ -96,7 +96,7 @@ export default function EditableText({
   }
 
   return (
-    <motion.div 
+    <Motion.div 
       style={{ display: 'inline-block', position: 'relative', cursor: 'url(/target.png), pointer', ...style, border: '1px dashed transparent', padding: '2px', borderRadius: '4px' }}
       whileHover={{ borderColor: 'rgba(0, 207, 207, 0.5)', backgroundColor: 'rgba(0, 207, 207, 0.05)' }}
       onClick={() => setIsEditing(true)}
@@ -110,6 +110,6 @@ export default function EditableText({
       <style>{`
         div:hover > .edit-badge { opacity: 1 !important; }
       `}</style>
-    </motion.div>
+    </Motion.div>
   );
 }

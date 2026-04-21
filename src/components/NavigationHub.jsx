@@ -5,6 +5,8 @@ import Crewmate from './Crewmate';
 import { usePortfolioInfo } from '../context/PortfolioContext';
 import EditableText from './EditableText';
 
+const _motion = motion;
+
 const navButtons = [
   { color: '#00CFCF', label: 'ABOUT', path: '/' },
   { color: '#F5F557', label: 'SKILLS', path: '/skills' },

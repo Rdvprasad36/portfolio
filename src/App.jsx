@@ -1,5 +1,6 @@
-import { Suspense, lazy, useState } from 'react';
 
+
+import { lazy, Suspense, useState } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
 import SpaceBackground from './components/SpaceBackground';
