@@ -3,6 +3,7 @@ import { supabase } from '../lib/supabase';
 
 // Default data for static or fallback content
 const defaultData = {
+
   profile: {
     name: "Durga Venkata Prasad Rapeti",
     role: "AI & Data Science Student @ JNTUK | Full Stack Developer",

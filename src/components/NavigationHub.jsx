@@ -143,11 +143,7 @@ export default function NavigationHub() {
           background: '#1A212D', borderRadius: '16px', border: '4px solid #131821',
           padding: '32px', minHeight: '500px', display: 'flex', flexDirection: 'column'
         }}>
-          <h2 className="pixel-heading" style={{ color: '#E0E0E0', textAlign: 'center', fontSize: '24px', marginBottom: '40px' }}>
-            PORTFOLIO OVERVIEW
-          </h2>
-
-          <div style={{ display: 'flex', gap: '40px', flexWrap: 'wrap', justifyContent: 'center' }}>
+<canvas id="snow-canvas" style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', zIndex: 1, pointerEvents: 'none' }} />
             {/* Profile Side */}
             <div style={{ flex: '1', minWidth: '300px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
               <div style={{ position: 'relative', background: '#A6B6C1', padding: '12px', borderRadius: '16px', border: '6px solid #637785', boxShadow: '0 8px 0 #3D4A52' }}>
@@ -297,7 +293,6 @@ export default function NavigationHub() {
               </div>
             </div>
           </div>
-        </div>
       </motion.div>
     </motion.section>
   );
