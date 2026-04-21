@@ -48,7 +48,7 @@ function NavButton({ btn }) {
     >
       <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
         <Crewmate color={btn.color} size={30} label="" />
-        <span className="pixel-heading" style={{ color: '#E0E0E0', fontSize: '11px' }}>
+        <span style={{ color: '#E0E0E0', fontSize: '11px', fontFamily: 'Times New Roman, serif' }}>
           {btn.label}
         </span>
       </div>
@@ -64,8 +64,19 @@ background: '#333',
 }
 
 export default function NavigationHub() {
-  const { data, isAdmin, updateProfile, addActivity, updateActivity, deleteActivity } = usePortfolioInfo();
-  const { profile, recentActivities } = data;
+  const { data, isAdmin, isLoading, updateProfile, addActivity, updateActivity, deleteActivity } = usePortfolioInfo();
+  const { profile, recentActivities } = data || {};
+  
+  if (isLoading) {
+    return <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '80vh', color: '#00CFCF' }}>
+      Loading portfolio data...
+    </div>;
+  }
+  if (!data) {
+    return <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '80vh', color: '#00CFCF' }}>
+      Loading...
+    </div>;
+  }
   const [currentActivitySlide, setCurrentActivitySlide] = useState(0);
 
   const nextActivity = () => {

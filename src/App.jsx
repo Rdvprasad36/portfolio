@@ -31,8 +31,8 @@ function App() {
 
   return (
     <>
-      <VCROverlay />
-      <SpaceBackground />
+
+
       
       <main style={{ position: 'relative', minHeight: '100vh', zIndex: 10, paddingTop: '70px' }}>
         <Navbar />

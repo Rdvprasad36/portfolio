@@ -10,7 +10,9 @@ class ErrorBoundary extends React.Component {
     return { hasError: true };
   }
 
-  // componentDidCatch removed for linter
+  componentDidCatch(error, errorInfo) {
+    console.error('ErrorBoundary caught error:', error, errorInfo);
+  }
 
 
   render() {

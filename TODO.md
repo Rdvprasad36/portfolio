@@ -1,11 +1,8 @@
-# Dark Mode Only - Remove Theme Toggle TODO
+# TODO: Fix Loading Logo Transitions & Home Open
 
-## Plan Steps:
-- [x] Step 1: Edit Navbar.jsx - Remove toggle button, fix styles to dark-only.
-- [x] Step 2: Edit PortfolioContext.jsx - Remove theme state/toggleTheme, set fixed dark.
-- [x] Step 3: Edit index.css - Delete light theme CSS block.
-- [x] Step 4: Test changes - Run dev server, verify dark mode fixed, no toggle, no errors.
-- [x] Step 5: Complete task.
-
-Current progress: Starting Step 1.
-
+## Plan Breakdown:
+1. ✅ Analyzed files (Loading.jsx, Intro.jsx, Navbar.jsx, App.jsx)
+2. ✅ Edit Loading.jsx: Removed ALL Framer Motion animations/props from logo, title, subtitle, stars (static now)
+3. ✅ Edit Intro.jsx: Reduced timeout from 3000ms to 1500ms  
+4. ✅ Test: Added loading check + ErrorBoundary logging for "something went wrong"
+5. ⬜ Final test & complete

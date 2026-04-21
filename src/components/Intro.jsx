@@ -1,18 +1,16 @@
 import { useEffect, useState } from 'react';
 
-import { motion } from 'framer-motion';
+import { 
+  motion } from 'framer-motion';
 import Loading from './Loading';
 
 const MotionDiv = motion.div;
 
 export default function Intro({ onComplete }) {
-  const [showSnow, setShowSnow] = useState(true);
-
   useEffect(() => {
     const timer = setTimeout(() => {
-      setShowSnow(false);
-      setTimeout(onComplete, 1000);
-    }, 5000);
+      onComplete();
+    }, 3000);
 
     return () => clearTimeout(timer);
   }, [onComplete]);
@@ -25,8 +23,8 @@ export default function Intro({ onComplete }) {
     <MotionDiv
       className="intro-container"
       initial={{ opacity: 1 }}
-      animate={showSnow ? { opacity: 1 } : { opacity: 0 }}
-      transition={{ duration: 1 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.1 }}
       style={{
         position: 'fixed',
         inset: 0,
@@ -39,7 +37,6 @@ export default function Intro({ onComplete }) {
         fontFamily: 'Courier New, monospace',
       }}
     >
-      {showSnow && <SnowCanvas />}
       <Loading />
     </MotionDiv>
   );

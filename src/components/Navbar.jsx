@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { AnimatePresence } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 import { useNavigate, useLocation } from 'react-router-dom';
 import AdminLoginModal from './AdminLoginModal';
 import { usePortfolioInfo } from '../context/PortfolioContext';
